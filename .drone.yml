@@ -1,0 +1,171 @@
+kind: pipeline
+name: deploy-test
+
+trigger:
+  branch:
+    - develop
+  event:
+    exclude:
+      - pull_request
+
+steps:
+  - name: build:php
+    image: composer
+    commands:
+      - composer install --no-progress --no-suggest --no-interaction -o --ignore-platform-reqs --classmap-authoritative
+    volumes:
+      - name: composer-cache
+        path: /tmp
+    depends_on: [ clone ]
+
+  - name: build:Node
+    image: node:15.5
+    commands:
+      - yarn install
+      - yarn run production
+    volumes:
+      - name: yarn-cache
+        path: /usr/local/share/.cache/yarn/v4
+    depends_on: [ clone ]
+
+  - name: rsync
+    image: drillster/drone-rsync
+    environment:
+      RSYNC_KEY:
+        from_secret: ssh-key-cloud
+    settings:
+      user: root
+      port: 22
+      hosts:
+        - dev.portal.localhero.de
+      target: /var/www/html/
+      exclude:
+        - ".git"
+        - ".vscode"
+        - ".gitignore"
+        - ".drone.yml"
+        - "public/.htaccess"
+      script:
+        - "cd /var/www/html/"
+        - "chown -R www-data:www-data /var/www/"
+        - "php artisan down"
+        - "rm -rf bootstrap/cache/*"
+        - "redis-cli -h localhost -p 6379 -a '5e5opLv94H8KMDqVDofgZxV2psye' FLUSHALL"
+        - "php artisan view:clear"
+        - "php artisan config:clear"
+        - "php artisan migrate --force"
+        - "php artisan horizon:terminate"
+        - "systemctl restart laravel-websockets"
+        - "php artisan up"
+    depends_on: [ build:php, build:Node ]
+
+  - name: slack
+    image: plugins/slack
+    settings:
+      webhook: https://hooks.slack.com/services/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
+      channel: builds
+      username: drone
+      template: >
+        {{#failure build.status}}
+          Portal Build {{build.number}} failed. Hotfix needed!
+        {{else}}
+          Portal Build {{build.number}} succeded. All good!
+        {{/failure}}
+    when:
+      status: [ failure ]
+    depends_on: [ rsync ]
+
+volumes:
+  - name: composer-cache
+    host:
+      path: /home/unit_web/droneci/cache/composer
+  - name: yarn-cache
+    host:
+      path: /home/unit_web/droneci/cache/yarn
+
+---
+
+kind: pipeline
+name: deploy-live
+
+trigger:
+  branch:
+    - master
+  event:
+    exclude:
+      - pull_request
+
+steps:
+  - name: build:php
+    image: composer
+    commands:
+      - composer install --no-progress --no-suggest --no-interaction --no-dev -o --ignore-platform-reqs --classmap-authoritative
+    volumes:
+      - name: composer-cache
+        path: /tmp
+    depends_on: [ clone ]
+
+  - name: build:Node
+    image: node:15.5
+    commands:
+      - yarn install
+      - yarn run production
+    volumes:
+      - name: yarn-cache
+        path: /usr/local/share/.cache/yarn/v4
+    depends_on: [ clone ]
+
+  - name: rsync
+    image: drillster/drone-rsync
+    environment:
+      RSYNC_KEY:
+        from_secret: ssh-key-cloud
+    settings:
+      user: root
+      port: 22
+      hosts:
+        - 116.203.226.21
+      target: /var/www/html/
+      exclude:
+        - ".git"
+        - ".gitignore"
+        - ".vscode"
+        - ".drone.yml"
+        - "public/.htaccess"
+      script:
+        - "cd /var/www/html/"
+        - "chown -R www-data:www-data /var/www/"
+        - "php artisan down"
+        - "rm -rf bootstrap/cache/*"
+        - "redis-cli -h localhost -p 6379 -a 'uwMEdECpfk8QSt' FLUSHALL"
+        - "php artisan view:clear"
+        - "php artisan config:clear"
+        - "php artisan migrate --force"
+        - "php artisan horizon:terminate"
+        - "systemctl restart laravel-websockets"
+        - "php artisan up"
+    depends_on: [ build:php, build:Node ]
+
+  - name: slack
+    image: plugins/slack
+    settings:
+      webhook: https://hooks.slack.com/services/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
+      channel: builds
+      username: drone
+      template: >
+        {{#failure build.status}}
+          Portal Build {{build.number}} failed. Hotfix needed!
+        {{else}}
+          Portal Build {{build.number}} succeded. All good!
+        {{/failure}}
+    when:
+      status: [ failure ]
+    depends_on: [ rsync ]
+
+volumes:
+  - name: composer-cache
+    host:
+      path: /home/unit_web/droneci/cache/composer
+  - name: yarn-cache
+    host:
+      path: /home/unit_web/droneci/cache/yarn

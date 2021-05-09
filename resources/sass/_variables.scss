@@ -1,0 +1,45 @@
+// Body
+$body-bg: #fff;
+$main-bg: #fff;
+
+// Typography
+$font-family-sans-serif: "Roboto", sans-serif;
+$font-size-base: 0.9rem;
+$line-height-base: 1.6;
+$headings-font-weight: 700;
+
+// Colors
+$blue: #3490dc;
+$indigo: #6574cd;
+$purple: #9561e2;
+$pink: #f66d9b;
+$red: #db0630;
+$orange: #ee8924;
+$yellow: #f1dd24;
+$green: #32bb60;
+$teal: #4dc0b5;
+$cyan: #6cb2eb;
+
+$colors: (
+    "light-dark": #f0f1f5,
+);
+
+$border-color: #cfdee5;
+
+$theme-colors: (
+    "danger": darken(saturate($red, 30), 10),
+    "primary": $red,
+);
+
+$input-btn-focus-color: rgba(0, 0, 0, 0.116);
+
+// Borders
+$border-radius: 5px;
+
+// Cards
+$card-border-radius: 5px;
+
+// Table
+$table-accent-bg: #fbfbfb;
+
+$zindex-main-sidebar: 1035;

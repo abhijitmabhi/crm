@@ -1,0 +1,44 @@
+{
+  "switchOpen": "Geöffnet",
+  "switchClosed": "Geschlossen",
+  "placeholderOpens": "von",
+  "placeholderCloses": "bis",
+  "addHours": "Weitere Öffnungszeit",
+  "open": {
+    "invalidInput": "Bitte gebe die Zeit im 24 Stunden Format ein.",
+    "greaterThanNext": "Öffnungszeit liegt nach der Schließzeit.",
+    "lessThanPrevious": "Öffnungszeit liegt vor der vorherigen Schließzeit.",
+    "midnightNotLast": "Mitternacht kann nur für die letzte Schließzeit des Tages ausgewählt werden."
+  },
+  "close": {
+    "invalidInput": "Bitte gebe die Zeit im 24 Stunden Format ein.",
+    "greaterThanNext": "Schließzeit liegt vor der Öffnungszeit.",
+    "lessThanPrevious": "Schließzeit liegt nach der nächsten Öffnungszeit.",
+    "midnightNotLast": "Mitternacht kann nur für die letzte Schließzeit des Tages ausgewählt werden."
+  },
+  "t24hours": "24 Stunden",
+  "midnight": "24:00",
+  "days": {
+    "monday": "Montag",
+    "tuesday": "Dienstag",
+    "wednesday": "Mittwoch",
+    "thursday": "Donnerstag",
+    "friday": "Freitag",
+    "saturday": "Samstag",
+    "sunday": "Sonntag",
+    "newYearsEve": "Silvester",
+    "newYearsDay": "Neujahr",
+    "martinLutherKingJrDay": "Martin Luther King Jr. Tag",
+    "presidentsDay": "Presidents' Day",
+    "easter": "Ostern",
+    "memorialDay": "Gedenktag",
+    "independenceDay": "Tag der Unabhängigkeit",
+    "fourthOfJuly": "4. Juli",
+    "laborDay": "Tag der Arbeit",
+    "columbusDay": "Kolumbus-Tag",
+    "veteransDay": "Veteranen-Tag",
+    "thanksgivingDay": "Erntedankfest",
+    "christmasEve": "Heiligabend",
+    "christmas": "Weihnachten"
+  }
+}

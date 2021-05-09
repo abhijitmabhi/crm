@@ -1,0 +1,25 @@
+{
+    "web": {
+        "client_id": "268570839915-lnfg91766dhdc5oappgcdrpr8d9lefqb.apps.googleusercontent.com",
+        "project_id": "mybusiness-experts",
+        "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+        "token_uri": "https://oauth2.googleapis.com/token",
+        "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+        "client_secret": "vLwRQnlRHNiP_I1jBlurfkXd",
+        "redirect_uris": [
+            "https://localsearchsystem.localhero.de/*",
+            "https://localsearchsystem.localhero.de",
+            "https://localsearchsystem.localhero.de/admin/googleoauthreturn/",
+            "https://localsearch.alphatier.de",
+            "https://localsearch.alphatier.de/*",
+            "https://localsearch.alphatier.de/admin/googleoauthreturn/",
+            "https://alphatiercrm.dev/googleoauth",
+            "https://dev.portal.localhero.de/googleauth"
+        ],
+        "javascript_origins": [
+            "https://localsearchsystem.localhero.de",
+            "https://localsearch.alphatier.de",
+            "https://alphatiercrm.dev"
+        ]
+    }
+}

@@ -1,0 +1,32 @@
+@import "~@fullcalendar/daygrid/main.css";
+@import "~@fullcalendar/timegrid/main.css";
+@import "~@fullcalendar/list/main.css";
+
+.fc-event-title-container {
+    cursor: pointer;
+}
+
+.fc .fc-col-header-cell-cushion, .fc .fc-daygrid-day-number{
+    color: black;
+    text-decoration: none;
+}
+
+.fc .fc-button:not(:disabled) {
+    background-color: gray;
+    border: none;
+}
+
+.fc-view-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.fc-header-toolbar {
+    font-size: 0.78rem;
+    letter-spacing: 0;
+}
+
+.fc-toolbar-title{
+    width: 8em;
+    white-space: nowrap;
+}

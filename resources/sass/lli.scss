@@ -1,0 +1,56 @@
+/*
+LLI Module
+ */
+
+.lli-card {
+    padding: 40px;
+}
+
+.lli-table-card {
+    padding: 0;
+}
+
+.lli-table-card-header {
+    padding: 25px 40px;
+}
+
+.lli-card-header {
+    padding-bottom: 40px;
+}
+
+.lli-card .card-body {
+    padding: 0 0 20px;
+}
+
+.lli-card-title {
+    font-size: 30px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.67;
+    letter-spacing: normal;
+    text-align: left;
+    color: #34373a;
+    margin-bottom: 0;
+}
+
+.lli-table-cell {
+    border: 1px solid rgba(175, 190, 198, 0.2);
+    min-width: 100px;
+    text-align: center;
+    padding: 20px;
+    font-size: 16px;
+}
+
+.lli-table-cell-left {
+    border-left: 0;
+}
+
+.lli-table-cell-middle {
+    text-align: left;
+    padding-left: 40px;
+}
+
+.lli-table-cell-right {
+    border-right: 0;
+}

@@ -1,0 +1,9 @@
+includes:
+    - vendor/nunomaduro/larastan/extension.neon
+    - vendor/bensampo/laravel-enum/extension.neon
+parameters:
+    level: max
+    excludes_analyse:
+        - %rootDir%/../../../app/LLI/MyBusiness.php
+    ignoreErrors:
+        - '/Call to an undefined method \\Illuminate\\Database\\Eloquent\\Builder::.*/'

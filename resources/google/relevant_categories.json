@@ -1,0 +1,23 @@
+{
+    "accounting": "Buchhaltung",
+    "bicycle_store": "Fahrradhändler",
+    "car_dealer": "Autohaus",
+    "car_repair": "Autowerkstatt",
+    "dentist": "Zahnarzt",
+    "doctor": "Arzt",
+    "electrician": "Elektriker",
+    "funeral_home": "Bestattungsinstitut",
+    "furniture_store": "Möbelhaus",
+    "gym": "Fitnessstudio",
+    "insurance_agency": "Versicherungen",
+    "jewelry_store": "Juwelier",
+    "lawyer": "Rechtsanwalt",
+    "locksmith": "Schlosser",
+    "lodging": "Hotel",
+    "moving_company": "Umzugsunternehmen",
+    "painter": "Maler",
+    "physiotherapist": "Physiotherapie",
+    "plumber": "Klempner",
+    "real_estate_agency": "Immobilienmakler",
+    "roofing_contractor": "Dachdecker"
+}
